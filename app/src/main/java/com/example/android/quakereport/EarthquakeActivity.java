@@ -35,9 +35,11 @@ public class EarthquakeActivity extends AppCompatActivity {
        // ArrayList<String> earthquakes = new ArrayList<>();
         ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
 
-        EarthquakeAdapter earthquakesAdapter = new EarthquakeAdapter(this, earthquakes);
+
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
+
+        EarthquakeAdapter earthquakesAdapter = new EarthquakeAdapter(this, earthquakes);
 
         // Create a new {@link ArrayAdapter} of earthquakes
 
