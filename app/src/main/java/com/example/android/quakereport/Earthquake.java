@@ -1,5 +1,9 @@
 package com.example.android.quakereport;
 
+import java.text.SimpleDateFormat;
+
+import static android.text.TextUtils.split;
+
 /**
  * Created by flysamc on 1/3/17.
  */
@@ -7,9 +11,16 @@ package com.example.android.quakereport;
 public class Earthquake {
     private String mMagnitude;
     private String mPlace;
-    private int mTime;
+    private long mTime;
+    private String mNearBy;
+    private String mLocation;
 
-    Earthquake(String magnitude,String place,int time){
+
+
+
+
+
+    Earthquake(String magnitude,String place,long time){
         mMagnitude = magnitude;
         mPlace = place;
         mTime = time;
@@ -21,9 +32,17 @@ public class Earthquake {
     public String getPlace(){
         return mPlace;
     }
-    public int getTime(){
+    public long getTime(){
         return mTime;
     }
+
+    public void splitLocation(String mPlace){
+
+        split(mPlace , ",");
+
+    }
+
+
 
 
 }
