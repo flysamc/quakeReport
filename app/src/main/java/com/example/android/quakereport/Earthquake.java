@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 import static android.text.TextUtils.split;
 import static android.text.TextUtils.substring;
+import static java.security.AccessController.getContext;
 
 /**
  * Created by flysamc on 1/3/17.
@@ -17,7 +18,7 @@ public class Earthquake {
     private long mTime;
     private String mNearBy;
     private String mLocation;
-    private String[] seperateLocation;
+    private static final String LOCATION_SEPARATOR = " of ";
 
 
 
@@ -28,6 +29,7 @@ public class Earthquake {
         mMagnitude = magnitude;
         mPlace = place;
         mTime = time;
+        setSeperateLocation(mPlace);
     }
 
     public String getMagnitude(){
@@ -44,17 +46,23 @@ public class Earthquake {
         return mTime;
     }
 
-    public void splitLocation(String mPlace){
 
-        seperateLocation = split(mPlace , ",");
-        mLocation = seperateLocation[1];
-        mNearBy = seperateLocation[0];
-        Log.v("Earthquake" , mNearBy);
-        Log.v("Earthquake" , mLocation);
+    public void setSeperateLocation(String mPlace){
+        //if-else statement to check if the location string contains offset location or not
+        if(mPlace.contains(LOCATION_SEPARATOR)){
+
+            String [] strarr = mPlace.split(LOCATION_SEPARATOR);
+            mNearBy = strarr[0] + LOCATION_SEPARATOR;
+            mLocation = strarr[1];
+
+        }
+        else{
+            mNearBy = " near the ";
+            mLocation = mPlace;
+        }
+
 
     }
-
-
 
 
 }

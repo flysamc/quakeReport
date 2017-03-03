@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.example.android.quakereport.R.id.list;
 import static com.example.android.quakereport.R.id.time;
 
 /**
@@ -52,6 +53,9 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         TextView place = (TextView) listItemView.findViewById(R.id.place);
         place.setText(currentEarthquake.getPlace());
+
+        TextView nearby = (TextView) listItemView.findViewById(R.id.location);
+        nearby.setText(currentEarthquake.getNearBy());
 
         Date dateObject = new Date(currentEarthquake.getTime());
 
